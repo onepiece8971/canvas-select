@@ -2,8 +2,8 @@
   "name": "canvas-select",
   "version": "2.19.0",
   "description": "一个用于图片标注的javascript库，基于canvas，简单轻量，支持矩形、多边形、点、折线、圆形。",
-  "main": "lib/canvas-select.min.js",
-  "types": "lib/index.d.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "scripts": {
     "watch": "rollup -c -w",
     "build": "rollup -c",
@@ -45,9 +45,6 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.4"
   },
-  "homepage": "https://github.com/heylight/canvas-select",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/heylight/canvas-select.git"
-  }
+  "homepage": "https://github.com/onepiece8971/canvas-select",
+  "repository": "onepiece8971/canvas-select"
 }
