@@ -486,8 +486,12 @@ export default class CanvasSelect extends EventBus {
         console.log("handelKeyup", e.key)
         e.stopPropagation();
         this.evt = e;
-        if (this.lock || document.activeElement !== document.body || this.readonly) return;
+        if (this.lock || document.activeElement !== document.body || this.readonly) {
+            console.log("lock", this.lock, document.activeElement, document.body, this.readonly)
+            return
+        }
         if (this.activeShape.type) {
+            console.log("activeShape")
             if ([2, 4].includes(this.activeShape.type) && e.key === 'Escape') {
                 if (this.activeShape.coor.length > 1 && this.activeShape.creating) {
                     this.activeShape.coor.pop();
