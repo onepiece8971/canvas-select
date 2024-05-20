@@ -483,6 +483,7 @@ export default class CanvasSelect extends EventBus {
     }
 
     handelKeyup(e: KeyboardEvent) {
+        console.log("handelKeyup", e.key)
         e.stopPropagation();
         this.evt = e;
         if (this.lock || document.activeElement !== document.body || this.readonly) return;
@@ -494,7 +495,8 @@ export default class CanvasSelect extends EventBus {
                     this.deleteByIndex(this.activeShape.index);
                 }
                 this.update();
-            } else if (e.key === 'Backspace') {
+            } else if (e.key === 'Delete') {
+                console.log("Delete")
                 this.deleteByIndex(this.activeShape.index);
             }
         }

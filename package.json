@@ -8,7 +8,7 @@
     "watch": "rollup -c -w",
     "build": "rollup -c",
     "serve": "live-server --watch=./index.html,./lib --port=9999",
-    "dev": "npm run watch & npm run serve"
+    "dev": "concurrently \"npm run watch\" \"npm run serve\""
   },
   "files": [
     "/lib"
@@ -46,5 +46,8 @@
     "typescript": "^4.6.4"
   },
   "homepage": "https://github.com/onepiece8971/canvas-select",
-  "repository": "onepiece8971/canvas-select"
+  "repository": "onepiece8971/canvas-select",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
