@@ -3,7 +3,7 @@
   "version": "2.21.1",
   "description": "一个用于图片标注的javascript库，基于canvas，简单轻量，支持矩形、多边形、点、折线、圆形。",
   "main": "lib/canvas-select.min.js",
-  "types": "lib/src/index.d.ts",
+  "types": "lib/types/index.d.ts",
   "type": "module",
   "engines": {
     "node": ">=16.0.0"
@@ -40,12 +40,12 @@
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
     "live-server": "git+https://github.com/tapio/live-server.git#ad22544",
     "rollup": "^4.17.2",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.6.2",
     "typescript": "^5.4.5"
   },
