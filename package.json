@@ -5,9 +5,6 @@
   "main": "lib/canvas-select.min.js",
   "types": "lib/types/index.d.ts",
   "type": "module",
-  "engines": {
-    "node": ">=16.0.0"
-  },
   "scripts": {
     "watch": "rollup -c -w",
     "build": "rollup -c",
