@@ -8,12 +8,12 @@ export default {
   output: {
     exports: 'auto',
     file: 'lib/canvas-select.min.js',
-    format: 'umd',
+    format: 'es',
     name: 'CanvasSelect',
     sourcemap: true,
   },
   plugins: [
-    typescript({ tsconfig: './tsconfig.json', compilerOptions: { declaration: true, declarationDir: './types' } }),
+    typescript({compilerOptions: { declaration: true, declarationDir: './types' } }),
     babel({ babelHelpers: 'bundled' }),
     terser(),
     json(),
