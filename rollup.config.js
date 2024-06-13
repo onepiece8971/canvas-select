@@ -9,7 +9,7 @@ export default {
     exports: 'auto',
     file: 'lib/canvas-select.min.js',
     format: 'umd',
-    name: 'CanvasLabel',
+    name: 'CanvasSelect',
     sourcemap: true,
   },
   plugins: [
