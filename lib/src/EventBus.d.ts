@@ -1,5 +1,5 @@
 export default class EventBus {
-    _eventTree: Record<string, any>;
+    private _eventTree;
     /**
    * 注册事件
    * @param eventName 事件名称

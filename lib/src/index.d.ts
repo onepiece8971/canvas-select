@@ -6,6 +6,14 @@ import Line from './shape/Line';
 import Circle from './shape/Circle';
 export type Point = [number, number];
 export type AllShape = Rect | Polygon | Dot | Line | Circle;
+declare enum Shape {
+    None = 0,
+    Rect = 1,
+    Polygon = 2,
+    Dot = 3,
+    Line = 4,
+    Circle = 5
+}
 export default class CanvasSelect extends EventBus {
     /** 当前版本 */
     version: string;
@@ -62,7 +70,7 @@ export default class CanvasSelect extends EventBus {
     /** 记录背景图鼠标位移 */
     remmberOrigin: number[];
     /** 0 不创建，1 矩形，2 多边形，3 点，4 折线，5 圆 */
-    createType: number;
+    createType: Shape;
     /** 控制点索引 */
     ctrlIndex: number;
     /** 背景图片 */
@@ -101,6 +109,7 @@ export default class CanvasSelect extends EventBus {
     isMobile: boolean;
     /** 向上展示label */
     labelUp: boolean;
+    private ctrlKey;
     /**
      * @param el Valid CSS selector string, or DOM
      * @param src image src
@@ -115,105 +124,16 @@ export default class CanvasSelect extends EventBus {
     /** 图片原始最大边尺寸 */
     get imageOriginMax(): number;
     /** 合成事件 */
-    mergeEvent(e: TouchEvent | MouseEvent): {
-        mouseX: number;
-        mouseY: number;
-        mouseCX: number;
-        mouseCY: number;
-        altKey: boolean;
-        button: number;
-        buttons: number;
-        clientX: number;
-        clientY: number;
-        ctrlKey: boolean;
-        metaKey: boolean;
-        movementX: number;
-        movementY: number;
-        offsetX: number;
-        offsetY: number;
-        pageX: number;
-        pageY: number;
-        relatedTarget: EventTarget;
-        screenX: number;
-        screenY: number;
-        shiftKey: boolean;
-        x: number;
-        y: number;
-        getModifierState(keyArg: string): boolean;
-        initMouseEvent(typeArg: string, canBubbleArg: boolean, cancelableArg: boolean, viewArg: Window, detailArg: number, screenXArg: number, screenYArg: number, clientXArg: number, clientYArg: number, ctrlKeyArg: boolean, altKeyArg: boolean, shiftKeyArg: boolean, metaKeyArg: boolean, buttonArg: number, relatedTargetArg: EventTarget): void;
-        detail: number;
-        view: Window;
-        which: number;
-        initUIEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window, detailArg?: number): void;
-        bubbles: boolean;
-        cancelBubble: boolean;
-        cancelable: boolean;
-        composed: boolean;
-        currentTarget: EventTarget;
-        defaultPrevented: boolean;
-        eventPhase: number;
-        isTrusted: boolean;
-        returnValue: boolean;
-        srcElement: EventTarget;
-        target: EventTarget;
-        timeStamp: number;
-        type: string;
-        composedPath(): EventTarget[];
-        initEvent(type: string, bubbles?: boolean, cancelable?: boolean): void;
-        preventDefault(): void;
-        stopImmediatePropagation(): void;
-        stopPropagation(): void;
-        AT_TARGET: number;
-        BUBBLING_PHASE: number;
-        CAPTURING_PHASE: number;
-        NONE: number;
-    } | {
-        mouseX: number;
-        mouseY: number;
-        mouseCX: number;
-        mouseCY: number;
-        altKey: boolean;
-        changedTouches: TouchList;
-        ctrlKey: boolean;
-        metaKey: boolean;
-        shiftKey: boolean;
-        targetTouches: TouchList;
-        touches: TouchList;
-        detail: number;
-        view: Window;
-        which: number;
-        initUIEvent(typeArg: string, bubblesArg?: boolean, cancelableArg?: boolean, viewArg?: Window, detailArg?: number): void;
-        bubbles: boolean;
-        cancelBubble: boolean;
-        cancelable: boolean;
-        composed: boolean;
-        currentTarget: EventTarget;
-        defaultPrevented: boolean;
-        eventPhase: number;
-        isTrusted: boolean;
-        returnValue: boolean;
-        srcElement: EventTarget;
-        target: EventTarget;
-        timeStamp: number;
-        type: string;
-        composedPath(): EventTarget[];
-        initEvent(type: string, bubbles?: boolean, cancelable?: boolean): void;
-        preventDefault(): void;
-        stopImmediatePropagation(): void;
-        stopPropagation(): void;
-        AT_TARGET: number;
-        BUBBLING_PHASE: number;
-        CAPTURING_PHASE: number;
-        NONE: number;
-    };
-    handleLoad(): void;
-    handleContextmenu(e: MouseEvent): void;
-    handleMousewheel(e: WheelEvent): void;
-    handleMouseDown(e: MouseEvent | TouchEvent): void;
-    handelMouseMove(e: MouseEvent | TouchEvent): void;
-    handelMouseUp(e: MouseEvent | TouchEvent): void;
-    handelDblclick(e: MouseEvent | TouchEvent): void;
-    handelKeyup(e: KeyboardEvent): void;
+    private mergeEvent;
+    private handleLoad;
+    private handleContextmenu;
+    private handleMousewheel;
+    private handleMouseDown;
+    private handleMouseMove;
+    private handleMouseUp;
+    private handleDblclick;
+    private handleKeydown;
+    private handleKeyup;
     /** 初始化配置 */
     initSetting(): void;
     /** 初始化事件 */
@@ -357,3 +277,4 @@ export default class CanvasSelect extends EventBus {
      */
     resize(): void;
 }
+export {};
