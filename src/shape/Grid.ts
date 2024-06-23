@@ -6,7 +6,7 @@ export default class Grid extends Shape {
   public row = 1
   public col = 1
   public selected: number[] = []
-  public selectedFillStyle: string
+  public selectedFillStyle: string = 'rgba(0, 0, 255, 0.1)'
 
   constructor(item: any, index: number) {
     super(item, index)
