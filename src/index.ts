@@ -17,7 +17,7 @@ enum Shape {
     Line,
     Circle
 }
-export default class CanvasSelect extends EventBus {
+class CanvasSelect extends EventBus {
     /** 当前版本 */
     version = pkg.version;
     /** 只读模式，画布不允许任何交互 */
@@ -1090,3 +1090,5 @@ export default class CanvasSelect extends EventBus {
         this.update();
     }
 }
+
+export default CanvasSelect
