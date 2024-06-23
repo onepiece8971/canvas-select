@@ -12,7 +12,7 @@ export default {
         sourcemap: true,
     },
     plugins: [
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript(),
       babel({ babelHelpers: "bundled" }),
       terser(), 
       json()
