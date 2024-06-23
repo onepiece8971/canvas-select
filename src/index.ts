@@ -1,3 +1,4 @@
+'use strict';
 import Rect from './shape/Rect';
 import Polygon from './shape/Polygon';
 import Dot from './shape/Dot';
