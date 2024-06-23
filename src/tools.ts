@@ -73,6 +73,7 @@ export function isNested(shape1: any, shape2: any): boolean {
 
     return true; // 有坐标点都在多边形内部，返回true
   }
+  return false;
 }
 
 function isPointInPolygon(x: number, y: number, vertices: any) {

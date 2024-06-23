@@ -14,9 +14,7 @@ declare enum Shape {
     Line = 4,
     Circle = 5
 }
-export declare class CanvasSelect extends EventBus {
-    /** 当前版本 */
-    version: string;
+export default class CanvasSelect extends EventBus {
     /** 只读模式，画布不允许任何交互 */
     lock: boolean;
     /** 只读模式，仅支持查看 */
@@ -57,12 +55,12 @@ export declare class CanvasSelect extends EventBus {
     WIDTH: number;
     /** 画布高度 */
     HEIGHT: number;
-    canvas: HTMLCanvasElement;
-    ctx: CanvasRenderingContext2D;
+    canvas: HTMLCanvasElement | any;
+    ctx: CanvasRenderingContext2D | any;
     /** 所有标注数据 */
     dataset: AllShape[];
-    offScreen: HTMLCanvasElement;
-    offScreenCtx: CanvasRenderingContext2D;
+    offScreen: HTMLCanvasElement | any;
+    offScreenCtx: CanvasRenderingContext2D | any;
     /** 记录锚点距离 */
     remmber: number[][];
     /** 记录鼠标位置 */
@@ -101,7 +99,7 @@ export declare class CanvasSelect extends EventBus {
     /** 专注模式 */
     focusMode: boolean;
     /** 记录当前事件 */
-    private evt;
+    evt: MouseEvent | TouchEvent | KeyboardEvent | null;
     /** 触控缩放时记录上一次两点距离 */
     scaleTouchStore: number;
     /** 当前是否为双指触控 */

@@ -4,7 +4,6 @@ import Dot from './shape/Dot';
 import EventBus from './EventBus';
 import Line from './shape/Line';
 import Circle from './shape/Circle';
-import pkg from '../package.json';
 import { isNested } from "./tools";
 
 export type Point = [number, number];
@@ -17,9 +16,8 @@ enum Shape {
     Line,
     Circle
 }
-export class CanvasSelect extends EventBus {
-    /** 当前版本 */
-    version = pkg.version;
+
+export default class CanvasSelect extends EventBus {
     /** 只读模式，画布不允许任何交互 */
     lock: boolean = false;
     /** 只读模式，仅支持查看 */
@@ -61,19 +59,19 @@ export class CanvasSelect extends EventBus {
     /** 画布高度 */
     HEIGHT = 0;
 
-    canvas: HTMLCanvasElement;
+    canvas: HTMLCanvasElement | any;
 
-    ctx: CanvasRenderingContext2D;
+    ctx: CanvasRenderingContext2D | any;
     /** 所有标注数据 */
     dataset: AllShape[] = [];
 
-    offScreen: HTMLCanvasElement;
+    offScreen: HTMLCanvasElement | any;
 
-    offScreenCtx: CanvasRenderingContext2D;
+    offScreenCtx: CanvasRenderingContext2D | any;
     /** 记录锚点距离 */
-    remmber: number[][];
+    remmber: number[][] = [];
     /** 记录鼠标位置 */
-    mouse: Point;
+    mouse: Point = [0, 0];
     /** 记录背景图鼠标位移 */
     remmberOrigin: number[] = [0, 0];
     /** 0 不创建，1 矩形，2 多边形，3 点，4 折线，5 圆 */
@@ -83,7 +81,7 @@ export class CanvasSelect extends EventBus {
     /** 背景图片 */
     image: HTMLImageElement = new Image();
     /** 图片原始宽度 */
-    IMAGE_ORIGIN_WIDTH: number;
+    IMAGE_ORIGIN_WIDTH: number = 0;
     /** 图片缩放宽度 */
     IMAGE_WIDTH = 0;
     /** 图片原始高度 */
@@ -109,7 +107,7 @@ export class CanvasSelect extends EventBus {
     /** 专注模式 */
     focusMode = false;
     /** 记录当前事件 */
-    private evt: MouseEvent | TouchEvent | KeyboardEvent;
+    public evt: MouseEvent | TouchEvent | KeyboardEvent | null = null;
     /** 触控缩放时记录上一次两点距离 */
     scaleTouchStore = 0;
     /** 当前是否为双指触控 */
@@ -243,7 +241,7 @@ export class CanvasSelect extends EventBus {
                         }
                     }
                 } else if (this.createType !== Shape.None && !this.readonly && !this.ctrlKey) { // 开始创建
-                    let newShape;
+                    let newShape: any;
                     const nx = Math.round(offsetX - this.originX / this.scale);
                     const ny = Math.round(offsetY - this.originY / this.scale);
                     const curPoint: Point = [nx, ny];
@@ -587,6 +585,7 @@ export class CanvasSelect extends EventBus {
                             shape = new Circle(item, index);
                             break;
                         default:
+                            shape = new Rect(item, index);
                             console.warn('Invalid shape', item);
                             break;
                     }
@@ -607,7 +606,7 @@ export class CanvasSelect extends EventBus {
      */
     hitOnShape(mousePoint: Point): [number, AllShape] {
         let hitShapeIndex = -1;
-        let hitShape: AllShape;
+        let hitShape: AllShape | any;
         for (let i = this.dataset.length - 1; i > -1; i--) {
             const shape = this.dataset[i];
             if (
@@ -811,7 +810,7 @@ export class CanvasSelect extends EventBus {
      * @param shape 标注实例
      */
     drawCirle(shape: Circle) {
-        const { strokeStyle, fillStyle, active, coor, label, creating, radius, ctrlsData, lineWidth } = shape;
+        const { strokeStyle, fillStyle, active, coor, creating, radius, ctrlsData, lineWidth } = shape;
         const [x, y] = coor.map((a) => a * this.scale);
         this.ctx.save();
         this.ctx.lineWidth = lineWidth || this.lineWidth;
