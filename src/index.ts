@@ -17,7 +17,7 @@ enum Shape {
     Circle
 }
 
-export default class CanvasSelect extends EventBus {
+export class CanvasSelect extends EventBus {
     /** 只读模式，画布不允许任何交互 */
     lock: boolean = false;
     /** 只读模式，仅支持查看 */
@@ -1088,4 +1088,8 @@ export default class CanvasSelect extends EventBus {
         this.initSetting();
         this.update();
     }
+}
+
+export default function CS(el: HTMLCanvasElement | string, src?: string) {
+    return new CanvasSelect(el, src);
 }

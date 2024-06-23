@@ -14,7 +14,7 @@ declare enum Shape {
     Line = 4,
     Circle = 5
 }
-export default class CanvasSelect extends EventBus {
+export declare class CanvasSelect extends EventBus {
     /** 只读模式，画布不允许任何交互 */
     lock: boolean;
     /** 只读模式，仅支持查看 */
@@ -275,4 +275,5 @@ export default class CanvasSelect extends EventBus {
      */
     resize(): void;
 }
+export default function CS(el: HTMLCanvasElement | string, src?: string): CanvasSelect;
 export {};
