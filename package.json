@@ -6,7 +6,7 @@
   "types": "lib/types/index.d.ts",
   "type": "module",
   "scripts": {
-    "watch": "rollup -c -w",
+    "watch": "rollup -c rollup.config.dev.js -w",
     "build": "rollup -c",
     "serve": "live-server --watch=./index.html,./lib --port=9999",
     "dev": "concurrently \"npm run watch\" \"npm run serve\""
