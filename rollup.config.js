@@ -6,8 +6,10 @@ import json from '@rollup/plugin-json';
 export default {
   input: 'src/index.ts',
   output: {
+    exports: 'auto',
     file: 'lib/index.min.js',
-    format: 'esm',
+    format: 'umd',
+    name: 'CanvasSelect',
     sourcemap: true,
   },
   plugins: [

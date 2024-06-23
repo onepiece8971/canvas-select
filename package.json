@@ -5,6 +5,7 @@
   "main": "lib/index.min.js",
   "types": "lib/types/index.d.ts",
   "type": "module",
+  "module": "esnext",
   "scripts": {
     "watch": "rollup -c -w",
     "build": "rollup -c",
