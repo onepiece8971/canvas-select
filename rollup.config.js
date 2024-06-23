@@ -7,9 +7,9 @@ export default {
   input: 'src/index.ts',
   output: {
     exports: 'auto',
-    file: 'lib/canvas-select.min.js',
+    file: 'lib/index.min.js',
     format: 'umd',
-    name: 'CanvasSelect',
+    name: 'canvas-select',
     sourcemap: true,
   },
   plugins: [
