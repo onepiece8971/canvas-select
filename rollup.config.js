@@ -8,7 +8,7 @@ export default {
     output: {
         file: 'lib/index.min.js',
         format: 'umd',
-        name: 'CS',
+        name: 'CanvasSelect',
         sourcemap: true,
     },
     plugins: [
