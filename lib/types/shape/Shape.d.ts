@@ -21,7 +21,7 @@ export default class Shape {
     textFillStyle: string;
     /** 标签文字字体 */
     labelFont: string;
-    /** 1 矩形，2 多边形，3 点，4 折线，5 圆 */
+    /** 1 矩形，2 多边形，3 点，4 折线，5 圆，6 网格 */
     type: number;
     /** 当前是否处于活动状态 */
     active: boolean;

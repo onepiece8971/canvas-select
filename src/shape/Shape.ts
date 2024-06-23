@@ -12,17 +12,17 @@ export default class Shape {
     /** 坐标 */
     public coor: any[] = []
     /** 边线颜色 */
-    public strokeStyle: string = '#000'
+    public strokeStyle: string = ''
     /** 填充颜色 */
-    public fillStyle: string = '#fff'
+    public fillStyle: string = ''
     /** 边线宽度 */
     public lineWidth: number = 1
     /** 标签填充颜色 */
-    public labelFillStyle: string = '#000'
+    public labelFillStyle: string = ''
     /** 标签文字颜色 */
-    public textFillStyle: string = '#fff'
+    public textFillStyle: string = ''
     /** 标签文字字体 */
-    public labelFont: string = '14px Microsoft YaHei'
+    public labelFont: string = ''
     /** 1 矩形，2 多边形，3 点，4 折线，5 圆，6 网格 */
     public type: number = 1 // 形状
     /** 当前是否处于活动状态 */

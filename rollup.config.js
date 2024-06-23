@@ -7,7 +7,7 @@ export default {
     input: "src/index.ts",
     output: {
         file: 'lib/index.min.js',
-        format: 'umd',
+        format: 'esm',
         name: 'CanvasSelect',
         sourcemap: true,
     },

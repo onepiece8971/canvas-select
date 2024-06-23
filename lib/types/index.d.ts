@@ -4,15 +4,17 @@ import Dot from './shape/Dot';
 import EventBus from './EventBus';
 import Line from './shape/Line';
 import Circle from './shape/Circle';
+import Grid from './shape/Grid';
 export type Point = [number, number];
-export type AllShape = Rect | Polygon | Dot | Line | Circle;
+export type AllShape = Rect | Polygon | Dot | Line | Circle | Grid;
 declare enum Shape {
     None = 0,
     Rect = 1,
     Polygon = 2,
     Dot = 3,
     Line = 4,
-    Circle = 5
+    Circle = 5,
+    Grid = 6
 }
 export default class CanvasSelect extends EventBus {
     /** 只读模式，画布不允许任何交互 */
@@ -67,7 +69,7 @@ export default class CanvasSelect extends EventBus {
     mouse: Point;
     /** 记录背景图鼠标位移 */
     remmberOrigin: number[];
-    /** 0 不创建，1 矩形，2 多边形，3 点，4 折线，5 圆 */
+    /** 0 不创建，1 矩形，2 多边形，3 点，4 折线，5 圆，6 网格 */
     createType: Shape;
     /** 控制点索引 */
     ctrlIndex: number;
@@ -108,6 +110,10 @@ export default class CanvasSelect extends EventBus {
     /** 向上展示label */
     labelUp: boolean;
     private ctrlKey;
+    /** 网格右键菜单 */
+    gridMenuEnable: boolean;
+    /** 网格选中背景填充颜色 */
+    gridSelectedFillStyle: string;
     /**
      * @param el Valid CSS selector string, or DOM
      * @param src image src
@@ -200,7 +206,7 @@ export default class CanvasSelect extends EventBus {
      * @param shape 标注实例
      * @returns
      */
-    drawRect(shape: Rect): void;
+    drawRect(shape: Rect, sub?: Record<string, any>): void;
     /**
      * 绘制多边形
      * @param shape 标注实例
@@ -221,6 +227,12 @@ export default class CanvasSelect extends EventBus {
      * @param shape 标注实例
      */
     drawLine(shape: Line): void;
+    /**
+     * 绘制网格
+     * @param shape 标注实例
+     * @returns
+     */
+    drawGrid(shape: Grid): void;
     /**
      * 绘制控制点
      * @param point 坐标
